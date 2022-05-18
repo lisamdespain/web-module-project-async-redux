@@ -5,6 +5,7 @@ import * as actions from './state/action-creators'
 
 function App(props) {
   const { movies, getMovieInfo } = props;
+  console.log(movies)
   useEffect(() =>{
     getMovieInfo()
   }, [])
@@ -14,9 +15,9 @@ function App(props) {
 
   }
   const onSubmit = evt =>{
-    evt.preventDefault()
-    getMovieInfo()
-    value = initialFormValues;
+    // evt.preventDefault()
+    // getMovieInfo()
+    // value = initialFormValues;
   }
   const initialFormValues = "";
 
@@ -27,13 +28,17 @@ function App(props) {
         <input onChange={onChange} name="name" type="text" placeholder="Enter the movie name" value={props.s}></input>
         <button>FIND MOVIE</button>
       </form>
-      {/* moviesState.map(movie => 
-      return (<div className='movie'><p>{movie.Title}</p>
-      <p>`Year: ${movie.Year}`</p>
-      <img src={movie.Poster} /></div>)) */}
-      
+      {movies.map(movie => 
+      (<div className='movie'><p>{movie.Title}</p>
+      <p>Year: {movie.Year}</p>
+      <img src={movie.Poster} /></div>))
+}
     </div>
   );
 }
 
-export default connect(st => st, actions)(App);
+export default connect(st => {
+  console.log(st)
+  return {movies: st}
+}
+  , actions)(App);
