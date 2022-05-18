@@ -12,7 +12,6 @@ function App(props) {
 
   const onChange = evt => {
     const {name, value} = evt.target
-
   }
   const onSubmit = evt =>{
     // evt.preventDefault()
@@ -29,9 +28,12 @@ function App(props) {
         <button>FIND MOVIE</button>
       </form>
       {movies.map(movie => 
-      (<div className='movie'><p>{movie.Title}</p>
-      <p>Year: {movie.Year}</p>
-      <img src={movie.Poster} /></div>))
+      (<div className="movie-card" key={movie.imdbID} >
+      <div className="movie-info">
+      <p className="title">{movie.Title}</p>
+      <p className="year">Year: {movie.Year}</p></div>
+      <div className="image-container"><img src={movie.Poster} /></div>
+      </div>))
 }
     </div>
   );

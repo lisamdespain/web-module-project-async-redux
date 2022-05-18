@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+div.movie-card{
+  width: 70%;
+  margin:2% auto;
+  padding:2%;
+  display: flex;
+  align-items:flex-start;
+  border:1px solid gray;
+  border-radius: 10px;
+}
+div.movie-info{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width:50%;
+}
+p.title{
+  text-align:left;
+  display:block;
+  font-size:2rem;
+  font-weight:bold;
+}
+p.year{
+  text-align:left;
+  display:block;
+  font-size:1.3rem;
+  font-style:italic;
+}
+img{
+  width:100%;
+}
+div.image-container{
+  width:50%;
+}
