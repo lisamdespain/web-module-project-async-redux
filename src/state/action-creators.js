@@ -19,10 +19,30 @@ export function getMovieInfo(){
    return function (dispatch){
 axios.request(initialOptions)
 .then(res => {
-    console.log(res.data.Search)
 	dispatch({type:types.GET_MOVIE_INFO, payload: res.data.Search});
 }).catch(function (error) {
 	console.error(error);
 });
    }
 }
+
+const searchedMovie = (movie) => {
+    return ({
+    ...initialOptions,
+  params: {s: movie, r: 'json', page: '1'},
+    })
+}
+
+
+export function getNewMovieInfo(movie){
+    return function (dispatch){
+        console.log("movie is:", movie) 
+ axios.request(searchedMovie(movie))
+ .then(res => {
+     console.log(res)
+     dispatch({type:types.GET_NEW_MOVIE_INFO, payload: res.data.Search});
+ }).catch(function (error) {
+     console.error(error);
+ });
+    }
+ }

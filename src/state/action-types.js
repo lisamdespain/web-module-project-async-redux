@@ -1,2 +1,3 @@
 
 export const GET_MOVIE_INFO = 'GET_MOVIE_INFO'
+export const GET_NEW_MOVIE_INFO = 'GET_NEW_MOVIE_INFO'

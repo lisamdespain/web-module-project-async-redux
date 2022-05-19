@@ -8,6 +8,9 @@ function movies(moviesState = initialState, action){
         case types.GET_MOVIE_INFO: {
             return action.payload
         }
+        case types.GET_NEW_MOVIE_INFO: {
+            return action.payload
+        }
         default:
             return moviesState;
     }
