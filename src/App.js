@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import { connect } from 'react-redux' // utility to "connect"
+import { connect } from 'react-redux' 
 import * as actions from './state/action-creators'
 
 function App(props) {
+  // quick set state based on user input, passed into getNewMovieInfo
   const [searched, setSearched] = useState('')
   const { movies, getMovieInfo, getNewMovieInfo } = props;
   useEffect(() =>{
@@ -15,18 +16,16 @@ function App(props) {
 
   }
   const onSubmit = evt =>{
-    console.log(evt)
     evt.preventDefault()
     getNewMovieInfo(searched)
-    // const initialFormValues = "";
-    // evt.target.value = initialFormValues;
+    document.getElementById('myform').reset();
   }
   
 
   return (
     <div className="App">
       <h1>QUICK MOVIE LOOKUP</h1>
-      <form onSubmit={onSubmit} >
+      <form onSubmit={onSubmit} id="myform" >
         <input onChange={onChange} name="name" type="text" placeholder="Enter the movie name" ></input>
         <button>FIND MOVIE</button>
       </form>
@@ -43,7 +42,6 @@ function App(props) {
 }
 
 export default connect(st => {
-  console.log(st)
   return {movies: st}
 }
   , actions)(App);
